@@ -26,9 +26,11 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'password' => Hash::make('password'), // Хешированный пароль
+            'age' => fake()->numberBetween(18, 65), // Возраст от 18 до 65
+            'status' => fake()->randomElement(['active', 'inactive', 'pending']), // Статус: active, inactive, или pending
+            'created_at' => fake()->dateTimeBetween('-1 year', 'now'),
+            'updated_at' => now(),
         ];
     }
 
