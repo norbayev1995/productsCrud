@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>Create Products</h1>
-<form action="{{ route('products.update', ['product' => $product]) }}" method="post">
+<form action="{{ route('products.update', ['product' => $product]) }}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <input type="text" name="name" placeholder="Name" value="{{ $product->name }}">

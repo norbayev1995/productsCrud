@@ -30,7 +30,11 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        Product::create($request->validated());
+        $product = new Product();
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        $product->save();
+
         return redirect()->route('products.index');
     }
 
@@ -55,7 +59,9 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        $product->update($request->validated());
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        $product->update();
         return redirect()->route('products.index');
     }
 

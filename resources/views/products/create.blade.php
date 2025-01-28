@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>Create Products</h1>
-<form action="{{ route('products.store') }}" method="post">
+<form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
     @csrf
     <input type="text" name="name" placeholder="Name">
     <input type="number" name="price" placeholder="Price">
